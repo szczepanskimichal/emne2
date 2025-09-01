@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="updateView()">
+    <div id="app">
+    </div>
+    <script>
+        function updateView(){
+            const startTime=performance.now();
+            document.getElementById("app").innerHTML=arguments`<h1>Hei igjen, verden!!!</h1>
+            <p>Dette er en ny paragraf which I created.</p>`;
+            const endTime=performance.now();
+            const timeUsed=endTime-startTime;
+            document.getElementById("app").innerHTML+=`
+            <p>Tid brukt: ${timeUsed.toFixed(2)} milliseconds</p>`;
+
+        }
+    </script>
+</body>
+</html>
