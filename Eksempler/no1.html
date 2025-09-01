@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="updateView()">
+    <div id="app">
+        <h1>Hei verden!!!</h1>
+    </div>
+
+    <script>
+        function updateView(){
+            const startTime = performance.now(); 
+            const app = document.getElementById('app');
+            const heading = app.querySelector('h1');
+            heading.textContent="Hei igjen, verden!!!";
+            app.appendChild(heading);
+            const paragraph = document.createElement('p');
+            paragraph.textContent = "Dette er en ny paragraf which I created.";
+            app.appendChild(paragraph);
+            const endTime = performance.now();
+            const duration = endTime - startTime;
+            const timeParagraph = document.createElement('p');
+            timeParagraph.textContent = `Update view took ${duration} milliseconds`;
+            app.appendChild(timeParagraph);
+        }
+    </script>
+
+</body>
+</html>
