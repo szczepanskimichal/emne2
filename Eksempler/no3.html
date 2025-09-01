@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JavaScript platform game</title>
+    <style>
+        body {
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #gameCanvas {
+            background: blue;
+            border: 5px solid white;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        // Get reference to the canvas and its 2D drawing context
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        // Set canvas size to 500x500 pixels
+        canvas.width = 500;
+        canvas.height = 500;
+        // Initial position of the rectangle
+        let x = 10;
+        let y = 50;
+        // Rectangle movement speed (direction) on X and Y axes
+        let retningX = 1;
+        let retningY = 3;
+        // Rectangle dimensions
+        let bredde = 100;
+        let høyde = 100;
+
+        // Start the animation loop
+        gameLoop();
+        // Alternative: use setInterval, but requestAnimationFrame is more efficient
+        // setInterval(gameLoop, 1000 / 60);
+
+        // Main game/animation loop
+        function gameLoop(timeStamp) {
+            // Clear the entire canvas (removes previous drawing)
+            ctx.clearRect(0, 0, 800, 720);
+
+            // Update rectangle position
+            x += retningX;
+            y += retningY;
+
+            // Check if the rectangle hits the left or right edge of the canvas
+            // If so, reverse the horizontal direction (bounce)
+            if (x > canvas.width - bredde || x < 0) {
+                retningX = -retningX;
+            }
+            // Check if the rectangle hits the top or bottom edge of the canvas
+            // If so, reverse the vertical direction (bounce)
+            if (y > canvas.height - høyde || y < 0) {
+                retningY = -retningY;
+            }
+
+            // Draw the rectangle at the new position
+            ctx.fillRect(x, y, bredde, høyde);
+
+            // Ask the browser to call gameLoop again on the next screen refresh (smooth animation)
+            requestAnimationFrame(gameLoop);
+
+            // Alternative: call gameLoop every 1/60 second (less efficient than requestAnimationFrame)
+            // setTimeout(gameLoop, 1000 / 60);
+             }
+    </script>
+</body>
+</html>
