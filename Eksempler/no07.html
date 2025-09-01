@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Dummy Værmelding</title>
+  <style>
+    body{
+        color: white;
+        background-color: black;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Værmelding for Uken</h1>
+  <div id="weather"></div>
+  
+  <script>
+    const weatherData = [
+      { day: 'Mandag', symbol: '☀️', temperature: '20°C' },
+      { day: 'Tirsdag', symbol: '🌤️', temperature: '18°C' },
+      { day: 'Onsdag', symbol: '☁️', temperature: '17°C' },
+      { day: 'Torsdag', symbol: '🌧️', temperature: '16°C' },
+      { day: 'Fredag', symbol: '⛈️', temperature: '15°C' },
+      { day: 'Lørdag', symbol: '❄️', temperature: '0°C' },
+      { day: 'Søndag', symbol: '🌩️', temperature: '12°C' }
+      
+    ];
+
+    document.getElementById('weather').innerHTML =  /*HTML*/`
+        <table>
+            <tr>
+                ${weatherData.map(d=>`<td>${d.day}</td>`).join('')}
+            </tr>
+            <tr>
+                ${weatherData.map(d=>`<td>${d.symbol}<br/>${d.temperature}</td>`).join('')}
+            </tr>
+        </table>
+        `;
+    
+  </script>
+</body>
+</html>

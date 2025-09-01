@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Dummy Værmelding</title>
+  <style>
+    body{
+        background-color: mediumturquoise;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Værmelding for Uken</h1>
+  <div id="weather"></div>
+  
+  <script>
+    // Weather data for each day of the week
+    const weatherData = [
+      { day: 'Mandag', symbol: '☀️', temperature: '20°C' },
+      { day: 'Tirsdag', symbol: '🌤️', temperature: '18°C' },
+      { day: 'Onsdag', symbol: '☁️', temperature: '17°C' },
+      { day: 'Torsdag', symbol: '🌧️', temperature: '16°C' },
+      { day: 'Fredag', symbol: '⛈️', temperature: '15°C' },
+      { day: 'Lørdag', symbol: '❄️', temperature: '0°C' },
+      { day: 'Søndag', symbol: '🌩️', temperature: '12°C' }
+    ];
+
+    // Generate the table header with days
+    const daysRow = `<tr>${weatherData.map(item => `<td>${item.day}</td>`).join('')}</tr>`;
+
+    // Generate the table row with weather symbols and temperatures
+    const weatherRow = `<tr>${weatherData.map(item => `<td>${item.symbol}<br>${item.temperature}</td>`).join('')}</tr>`;
+
+    // Combine rows into a table
+    const tableHTML = `<table>${daysRow}${weatherRow}</table>`;
+
+    // Insert the generated table into the page
+    document.getElementById('weather').innerHTML = tableHTML;
+    </script>
+</body>
+</html>

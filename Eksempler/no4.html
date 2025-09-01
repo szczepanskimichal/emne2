@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const style = document.body.style;
+        // const effect1 = () => style.backgroundColor = style.backgroundColor == 'lightgreen' ? 'white' : 'lightgreen';
+        // requestAnimationFrame(effect1);
+
+        /*
+            - Vanlig funksjon
+            - Variabel med verdi fra anonym vanlig funksjon
+            - Anonym funksjon inline, dvs. der vi trenger den
+            - Arrow function / lambda-funksjon
+        */
+
+        // const effect1 = () => document.body.style.backgroundColor = document.body.style.backgroundColor == 'lightgreen' ? 'white' : 'lightgreen';
+        // setTimeout( effect1, 5000);
+
+        // const effect1 = () => document.body.style.backgroundColor = document.body.style.backgroundColor == 'lightgreen' ? 'white' : 'lightgreen';
+        // setTimeout( effect1, 2000);
+
+        // setTimeout( () => document.body.style.backgroundColor = document.body.style.backgroundColor == 'lightgreen' ? 'white' : 'lightgreen', 2000);
+
+        // setTimeout(function () {
+        //     document.body.style.backgroundColor =
+        //         document.body.style.backgroundColor == 'lightgreen' ? 'white' : 'lightgreen';
+        // }, 2000);
+
+        //    const effect1 = function () {
+        //        document.body.style.backgroundColor =
+        //        document.body.style.backgroundColor == 'lightgreen' ? 'white' : 'lightgreen';
+        //     }
+        //     setTimeout(effect1, 2000);
+
+
+        // setTimeout(effect1, 2000);
+
+        // function effect1() {
+        //     document.body.style.backgroundColor =
+        //         document.body.style.backgroundColor == 'lightgreen' ? 'white' : 'lightgreen';
+        // }
+
+    </script>
+</body>
+
+</html>

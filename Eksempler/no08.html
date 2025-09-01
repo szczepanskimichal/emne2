@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Dummy Værmelding</title>
+  <style>
+    body{
+        background-color: mediumturquoise;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Værmelding for Uken</h1>
+  <div id="weather"></div>
+  
+  <script>
+    const weatherData = [
+      { day: 'Mandag', symbol: '☀️', temperature: '20°C' },
+      { day: 'Tirsdag', symbol: '🌤️', temperature: '18°C' },
+      { day: 'Onsdag', symbol: '☁️', temperature: '17°C' },
+      { day: 'Torsdag', symbol: '🌧️', temperature: '16°C' },
+      { day: 'Fredag', symbol: '⛈️', temperature: '15°C' },
+      { day: 'Lørdag', symbol: '❄️', temperature: '0°C' },
+      { day: 'Søndag', symbol: '🌩️', temperature: '12°C' }
+    ];
+
+    let html = '<table>';
+
+    // Lag en rad med ukedager
+    html += '<tr>';
+    for (let i = 0; i < weatherData.length; i++) {
+      html += '<td>' + weatherData[i].day + '</td>';
+    }
+    html += '</tr>';
+
+    // Lag en rad med værmeldinger (symbol og temperatur)
+    html += '<tr>';
+    for (let i = 0; i < weatherData.length; i++) {
+      html += '<td>' + weatherData[i].symbol + '<br>' + weatherData[i].temperature + '</td>';
+    }
+    html += '</tr>';
+
+    html += '</table>';
+
+    // Sett den genererte HTML'en inn i div'en med id "weather"
+    document.getElementById('weather').innerHTML = html;
+  </script>
+</body>
+</html>

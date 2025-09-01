@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--
+        1. Fjerne globale variabler (hvorfor?)
+        2. addEventListener (fordi vi må det når vi kommer til moduler)
+        3. Hvordan binder vi inn argumenter? 
+        4. Funksjon som returnerer funksjon
+        5. Currying og partial application
+            function greet(greeting, ending, name) {
+                return `${greeting}, ${name}${ending}`;
+            }       
+            greet = (greeting, ending, name) => `${greeting}, ${name}${ending}`
+        6. JavaScript bind
+            - partial application vha. bind
+            - bind mot objekter: https://www.w3schools.com/js/js_function_bind.asp
+    -->
+
+    <!-- <button onclick="setColorTheme('lightgreen', 'black')">Grønn på svart</button>
+    <button onclick="setColorTheme('lightblue', 'darkblue')">Lyseblå på mørkeblå</button>
+    <button onclick="setColorTheme('red', 'orange')">Rød på oransje</button> -->
+<!-- ---------------------------------------------------------------->
+ <!--
+        This example demonstrates several modern JavaScript techniques:
+        1. Avoiding global variables by scoping everything inside a function.
+        2. Using addEventListener for event handling (important for modular JS).
+        3. How to pass arguments to event handlers.
+        4. Functions that return functions (factory functions).
+        5. Currying and partial application.
+        6. JavaScript's bind method for partial application and object binding.
+    -->
+
+    <!-- Three buttons for changing the color theme of the page.
+         The onclick attributes are commented out because we use addEventListener in JS. -->
+
+    <button>Grønn på svart</button>
+    <button>Lyseblå på mørkeblå</button>
+    <button>Rød på oransje</button>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.
+    </p>
+    <!-- 
+    <script>
+        (function () {
+            const bodyStyle = document.body.style;
+            createSetColorThemeFunction('red', 'black')();
+
+            const btns = document.querySelectorAll('button');
+            btns[0].addEventListener('click', createSetColorThemeFunction('white', 'black'));
+            btns[1].addEventListener('click', createSetColorThemeFunction('lightblue', 'darkblue'));
+            btns[2].addEventListener('click', createSetColorThemeFunction('red', 'orange'));
+
+            function createSetColorThemeFunction(color1, color2) {
+                return function () {
+                    bodyStyle.color = color1;
+                    bodyStyle.backgroundColor = color2;
+                }
+            }
+        })();
+         -->
+
+        
+
+        <!-- Scoping - ingenting i global NS -->
+     
+    <!-- <script>
+    // Scoping - ingenting i global NS
+    (function () {
+        const bodyStyle = document.body.style;
+        setColorTheme('lightgreen', 'black')
+
+            const btns = document.querySelectorAll('button');
+            btns[0].addEventListener('click', () => setColorTheme('lightgreen', 'black'));
+            btns[1].addEventListener('click', () => setColorTheme('lightblue', 'darkblue'));
+            btns[2].addEventListener('click', () => setColorTheme('red', 'orange'));
+
+            function setColorTheme(color1, color2) {
+                bodyStyle.color = color1;
+                bodyStyle.backgroundColor = color2;
+            }
+        })();          -->
+
+<script>
+         // Call the initialization function immediately after the script loads.
+        init();
+
+        // The main function that sets up the color theme and event listeners.
+        function init() {
+            // Get a reference to the body's style object for easy color changes.
+            const bodyStyle = document.body.style;
+
+            // Set the default color theme: light green text on black background.
+            setColorTheme('lightgreen', 'black');
+
+            // Select all button elements on the page.
+            const btns = document.querySelectorAll('button');
+
+            // Add event listeners to each button to change the color theme when clicked.
+            // The arrow functions allow us to pass arguments to setColorTheme.
+            btns[0].addEventListener('click', () => setColorTheme('lightgreen', 'black'));     // Green on black
+            btns[1].addEventListener('click', () => setColorTheme('lightblue', 'darkblue'));   // Light blue on dark blue
+            btns[2].addEventListener('click', () => setColorTheme('red', 'orange'));           // Red on orange
+
+            // Helper function to change the text and background color of the page.
+            function setColorTheme(color1, color2) {
+                // Set the text color
+                bodyStyle.color = color1;
+                // Set the background color
+                bodyStyle.backgroundColor = color2;
+            }
+        }
+
+        // The code below is the original, global-scope version for reference only.
+        // It is commented out and not used in the current implementation.
+        /*
+        const bodyStyle = document.body.style;
+        setColorTheme('lightgreen', 'black')
+
+        function setColorTheme(color1, color2){
+            bodyStyle.color = color1;
+            bodyStyle.backgroundColor= color2;
+        }
+        */
+    </script>
+
+
+
+
+</body>
+
+</html>
