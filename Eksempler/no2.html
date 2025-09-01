@@ -10,12 +10,12 @@
     </div>
     <script>
         function updateView(){
-            const startTime=performance.now();
-            document.getElementById("app").innerHTML=arguments`<h1>Hei igjen, verden!!!</h1>
+            const startTime = performance.now();
+            document.getElementById("app").innerHTML = `<h1>Hei igjen, verden!!!</h1>
             <p>Dette er en ny paragraf which I created.</p>`;
-            const endTime=performance.now();
-            const timeUsed=endTime-startTime;
-            document.getElementById("app").innerHTML+=`
+            const endTime = performance.now();
+            const timeUsed = endTime - startTime;
+            document.getElementById("app").innerHTML += `
             <p>Tid brukt: ${timeUsed.toFixed(2)} milliseconds</p>`;
 
         }
