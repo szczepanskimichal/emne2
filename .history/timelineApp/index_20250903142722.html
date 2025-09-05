@@ -16,10 +16,12 @@
 
 <body>
     <main id="app"></main>
-    <script type="module" src="js/main.js">
-        
-        
-       
+    <script>
+        function updateView() {
+            if (model.app.currentPage === 'edit') updateViewEdit();
+            else updateViewMain();
+        }
+        updateView();
     </script>
 
 </body>
