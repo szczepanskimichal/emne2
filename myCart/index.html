@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Prosty koszyk</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .product { border: 1px solid #ccc; padding: 10px; margin: 5px; }
+    .cart { margin-top: 20px; border-top: 2px solid #000; padding-top: 10px; }
+    table { width: 100%; border-collapse: collapse; }
+    td, th { border: 1px solid #ccc; padding: 5px; }
+  </style>
+</head>
+<body>
+
+<h1>Produkty</h1>
+<div id="products"></div>
+
+<div class="cart">
+  <h2>Koszyk</h2>
+  <table id="cartTable">
+    <thead>
+      <tr><th>Produkt</th><th>Ilość</th><th>Cena</th><th>Razem</th><th></th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <p><strong>Suma: <span id="total">0</span> zł</strong></p>
+  <button onclick="clearCart()">Wyczyść koszyk</button>
+</div>
+
+<script>
+// demo produkty
+const products = [
+  { id: 1, name: "Koszulka", price: 50 },
+  { id: 2, name: "Spodnie", price: 120 },
+  { id: 3, name: "Buty", price: 250 }
+];
+
+let cart = [];
+
+// render lista produktów
+function renderProducts() {
+  const div = document.getElementById("products");
+  products.forEach(p => {
+    const el = document.createElement("div");
+    el.className = "product";
+    el.innerHTML = `
+      <strong>${p.name}</strong><br>
+      Cena: ${p.price} zł<br>
+      <button onclick="addToCart(${p.id})">Dodaj do koszyka</button>
+    `;
+    div.appendChild(el);
+  });
+}
+
+// dodaj produkt
+function addToCart(id) {
+  const prod = products.find(p => p.id === id);
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    item.qty++;
+  } else {
+    cart.push({ ...prod, qty: 1 });
+  }
+  renderCart();
+}
+
+// usuń produkt
+function removeFromCart(id) {
+  cart = cart.filter(i => i.id !== id);
+  renderCart();
+}
+
+// wyczyść koszyk
+function clearCart() {
+  cart = [];
+  renderCart();
+}
+
+// pokaż koszyk
+function renderCart() {
+  const tbody = document.querySelector("#cartTable tbody");
+  tbody.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    const row = document.createElement("tr");
+    const sum = item.price * item.qty;
+    total += sum;
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.qty}</td>
+      <td>${item.price} zł</td>
+      <td>${sum} zł</td>
+      <td><button onclick="removeFromCart(${item.id})">Usuń</button></td>
+    `;
+    tbody.appendChild(row);
+  });
+
+  document.getElementById("total").textContent = total;
+}
+
+// start
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
